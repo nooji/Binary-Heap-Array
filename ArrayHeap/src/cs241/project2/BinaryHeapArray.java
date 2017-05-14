@@ -7,7 +7,7 @@ public class BinaryHeapArray {
 	public BinaryHeapArray(){
 		size = 0;
 		swapNum = 0;
-		heapArray = new int[size];
+		heapArray = new int[100];
 	}
 	public BinaryHeapArray(int num){
 		size = 0;
@@ -73,11 +73,11 @@ public class BinaryHeapArray {
 		}
 	}
 	private void reheapifyDown(int index){
-		while((2*index)+1 < size){
-			int biggerChild = (2*index)+1;
-			if((2*index)+2 < size){
-				if(heapArray[2*index+1] < heapArray[(2*index)+2]){
-					biggerChild = (2*index)+2;
+		while(hasLeftChild(index)){
+			int biggerChild = leftChild(index);
+			if(hasRightChild(index)){
+				if(heapArray[biggerChild] < heapArray[rightChild(index)]){
+					biggerChild = rightChild(index);
 				}
 			}
 			if(heapArray[index] < heapArray[biggerChild]){
@@ -93,7 +93,6 @@ public class BinaryHeapArray {
 			index = biggerChild;
 		}
 	}
-	
 	public void printFirstTen(){
 		for(int i = 0; i < 10; i++){
 			System.out.print(heapArray[i] + ",");
@@ -119,10 +118,19 @@ public class BinaryHeapArray {
 	public int getSwapNum(){
 		return swapNum;
 	}
-
-	
 	public void clear(){
 		size = 0;
 	}
-	
+	private int leftChild(int index){
+		return (2*index)+1;
+	}
+	private int rightChild(int index){
+		return (2*index)+2;
+	}
+	private boolean hasLeftChild(int index){
+		return leftChild(index) < size;
+	}
+	private boolean hasRightChild(int index){
+		return rightChild(index) < size;
+	}
 }

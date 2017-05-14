@@ -40,7 +40,6 @@ public class BinaryHeapTest {
 						for(int j = 0; j < array1.length;j++){
 							heapRandOpti.insertNoReHeap(array1[j]);
 						}
-						System.out.print("\n");
 						heapRandOpti.reheapOptimize();
 						averageOpti+=heapRandOpti.getSwapNum();
 					}
@@ -83,6 +82,7 @@ public class BinaryHeapTest {
 					System.out.println("...\n");
 					break;
 				case 3:
+					System.out.println("Testing complete. Initiating exit...");
 					break;
 				default:
 					System.out.println("Invalid choice. Re-enter.");
